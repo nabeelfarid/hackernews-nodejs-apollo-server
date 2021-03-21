@@ -15,11 +15,6 @@ const link = async (parent, args, context) => {
   });
   // return links.find((l) => `link-${args.id}` === l.id)
 };
-// Link: {
-//     id: (parent) => parent.id,
-//     description: (parent) => parent.description,
-//     url: (parent) => parent.url
-// }
 
 module.exports = {
   info,

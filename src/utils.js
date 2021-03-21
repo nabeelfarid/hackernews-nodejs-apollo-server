@@ -6,8 +6,12 @@ const getTokenPayload = (token) => {
 };
 
 const getUserId = (req, authToken) => {
+  
+  
   if (req) {
     const authHeader = req.headers.authorization;
+    // console.log('authHeader', authHeader)
+  
     if (authHeader) {
       const token = authHeader.replace("Bearer ", "");
       if (!token) {
@@ -17,10 +21,10 @@ const getUserId = (req, authToken) => {
       return userId;
     }
   } else if (authToken) {
+    console.log('authToken', authToken)
     const { userId } = getTokenPayload(authToken);
     return userId;
   }
-
   throw new Error("Not authenticated");
 };
 

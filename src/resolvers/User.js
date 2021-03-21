@@ -1,7 +1,7 @@
-const links = (parent, args, context, info) => {
-  return context.prisma.user.findUnique({
+const links = async (parent, args, context, info) => {
+  return await context.prisma.user.findUnique({
       where: {
-          id: args.id
+          id: parent.id
       }
   }).links();
 };
