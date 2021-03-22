@@ -3,13 +3,15 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 const main = async () => {
-  // const newLink = await prisma.link.create({
-  //   data: {
-  //     description: "13Fullstach tutorial for GraphQL",
-  //     url: "www.13howtographql.com",
-  //     postedById : null
-  //   },
-  // });
+  const newLink = await prisma.link.create({
+    data: {
+      description: "13Fullstach tutorial for GraphQL",
+      url: "www.13howtographql.com",
+      postedById: null,
+    },
+  });
+
+  console.log("created new link", newLink);
 
   // await context.prisma.link.create({
   //   data: {
@@ -30,17 +32,19 @@ const main = async () => {
   // });
   // console.log(user);
 
-  let votes = await prisma.link.findUnique({where:{id: 1}}).votes()
+  // let votes = await prisma.link.findUnique({where:{id: 1}}).votes()
 
-  console.log(votes);
+  // console.log(votes);
 
-  let poastedby = await prisma.link.findUnique({
-    where: {
-        id: 1
-    }
-}).postedBy();
+  // let poastedby = await prisma.link
+  //   .findUnique({
+  //     where: {
+  //       id: 1,
+  //     },
+  //   })
+  //   .postedBy();
 
-console.log(poastedby);
+  // console.log(poastedby);
   // let userLinks = await prisma.user
   //   .findUnique({
   //     where: {
