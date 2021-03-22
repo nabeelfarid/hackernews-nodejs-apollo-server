@@ -1,3 +1,3 @@
 web: npm start
 
-release: ./release-tasks.sh
+release: bash release-tasks.sh
