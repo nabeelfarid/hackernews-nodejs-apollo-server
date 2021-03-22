@@ -1,3 +1,3 @@
 web: npm start
 
-release: bash release-tasks.sh
+release: npx prisma migrate reset -f
