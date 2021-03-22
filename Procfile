@@ -1,3 +1,3 @@
 web: npm start
 
-release: npx prisma migrate deploy && node src/script.js 
+release: heroku restart && heroku pg:reset DATABASE --confirm hackernews-server-nf && npx prisma migrate deploy && node src/script.js 
