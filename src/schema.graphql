@@ -24,6 +24,7 @@ type Link {
   url: String!
   postedBy: User
   votes: [Vote!]!
+  createdAt: DateTime!
 }
 
 type Feed {
@@ -43,7 +44,7 @@ enum Sort {
 }
 
 type AuthPayload {
-  token : String
+  token: String
   user: User
 }
 
@@ -60,3 +61,5 @@ type Vote {
   link: Link!
   user: User!
 }
+
+scalar DateTime

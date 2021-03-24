@@ -9,6 +9,7 @@ const Subscription = require("./resolvers/Subscription");
 const Link = require("./resolvers/Link");
 const User = require("./resolvers/User");
 const Vote = require("./resolvers/Vote");
+const DateTime = require("./resolvers/DateTime");
 
 const prisma = new PrismaClient();
 const pubsub = new PubSub();
@@ -30,6 +31,7 @@ const resolvers = {
   User,
   Link,
   Vote,
+  DateTime,
 };
 
 const server = new ApolloServer({
