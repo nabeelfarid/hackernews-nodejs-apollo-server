@@ -39,15 +39,31 @@ const server = new ApolloServer({
   playground: true,
   typeDefs: fs.readFileSync(path.join(__dirname, "schema.graphql"), "utf8"),
   resolvers,
+  // When Operation is a Query/Mutation, obtain header-provided token from req.headers
   context: ({ req }) => {
-    // console.log("req.headers.authorization", req.headers.authorization);
-    // console.log('inside context')
     return {
       ...req,
       prisma,
       pubsub,
       userId: req && req.headers.authorization ? getUserId(req) : null,
     };
+  },
+  // When Operation is a Subscription, obtain token from connectionParams
+  subscriptions: {
+    onConnect: (connectionParams) => {
+      if (connectionParams.authToken) {
+        // return context available in graphQL resolvers
+        return {
+          prisma,
+          userId: getUserId(null, connectionParams.authToken), //validate token and return userId
+        };
+      } else {
+        // return context available in graphQL resolvers
+        return {
+          prisma,
+        };
+      }
+    },
   },
 });
 
